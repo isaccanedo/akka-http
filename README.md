@@ -43,4 +43,14 @@ Vinculamos a rota fornecida por postUser() ao caminho / usuários. Se a solicita
   ##
   Se o método HTTP for GET, a solicitação será encaminhada para a rota getUser (). Se o usuário não existir, a Akka retornará o status HTTP 404 (não encontrado). Se o método não for POST nem GET, a Akka retornará o status HTTP 405 (Método não permitido)
   
+## Iniciando o Servidor
+Depois de criar uma implementação HttpApp como acima, podemos iniciar nosso servidor HTTP com algumas linhas de código:
+
+`public static void main (String [] args) lança Exception {
+   ActorSystem system = ActorSystem.create ("userServer");
+   ActorRef userActor = system.actorOf (UserActor.props (), "userActor");
+   Servidor UserServer = novo UserServer (userActor);
+   server.startServer ("localhost", 8080, sistema);
+}`
+  
   
