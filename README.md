@@ -7,7 +7,7 @@ Como exemplo, construiremos uma API HTTP que nos permite gerenciar os recursos d
 - criando um novo usuário
 - carregando um usuário existente
 
-### Basicamente, estamos estendendo a classe AbstractActor e implementando seu método createReceive ().
+## Basicamente, estamos estendendo a classe AbstractActor e implementando seu método createReceive ().
 
 Em createReceive (), estamos mapeando tipos de mensagens de entrada para métodos que manipulam mensagens do respectivo tipo.
 
