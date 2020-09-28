@@ -18,3 +18,10 @@ Mais tarde, veremos como traduzir as solicitações HTTP de entrada nessas mensa
 Por fim, delegamos todas as mensagens a uma instância de UserService, que fornece a lógica de negócios necessária para gerenciar objetos de usuário persistentes.
 
 Além disso, observe o método props(). Embora o método props() não seja necessário para estender AbstractActor, ele será útil posteriormente ao criar o ActorSystem.
+
+## Definindo Rotas HTTP
+Tendo um ator que faz o trabalho real para nós, tudo o que nos resta fazer é fornecer uma API HTTP que delega as solicitações HTTP de entrada para nosso ator.
+
+Akka usa o conceito de rotas para descrever uma API HTTP. Para cada operação, precisamos de uma rota.
+
+Para criar um servidor HTTP, estendemos a classe de framework HttpApp e implementamos o método de rotas:
