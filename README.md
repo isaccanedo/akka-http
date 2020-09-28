@@ -54,3 +54,6 @@ Depois de criar uma implementação HttpApp como acima, podemos iniciar nosso se
 }`
   
 Simplesmente criamos um ActorSystem com um único ator do tipo UserActor e iniciamos o servidor no localhost  
+
+## Conclusão
+Neste artigo, aprendemos sobre os fundamentos do Akka HTTP com um exemplo que mostra como configurar um servidor HTTP e expor endpoints para criar e carregar recursos, semelhante a uma API REST.
