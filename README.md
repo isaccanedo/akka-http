@@ -24,4 +24,18 @@ Tendo um ator que faz o trabalho real para nós, tudo o que nos resta fazer é f
 
 Akka usa o conceito de rotas para descrever uma API HTTP. Para cada operação, precisamos de uma rota.
 
-Para criar um servidor HTTP, estendemos a classe de framework HttpApp e implementamos o método de rotas:
+Para criar um servidor HTTP, estendemos a classe de framework HttpApp e implementamos o método de rotas
+
+##
+
+Agora, há uma boa quantidade de boilerplate aqui, mas observe que seguimos o mesmo padrão de antes das operações de mapeamento, desta vez como rotas. Vamos decompô-lo um pouco.
+
+Em getUser(), simplesmente envolvemos o ID de usuário recebido em uma mensagem do tipo GetUserMessage e encaminhamos essa mensagem para nosso userActor.
+
+Depois que o ator processa a mensagem, o manipulador onSuccess é chamado, no qual concluímos a solicitação HTTP enviando uma resposta com um determinado status HTTP e um determinado corpo JSON. Usamos o Jackson marshaller para serializar a resposta dada pelo ator em uma string JSON.
+
+Em postUser(), fazemos as coisas de maneira um pouco diferente, já que esperamos um corpo JSON na solicitação HTTP. Usamos o método entity() para mapear o corpo JSON de entrada em um objeto User antes de envolvê-lo em um CreateUserMessage e passá-lo para nosso ator. Novamente, usamos Jackson para mapear entre Java e JSON e vice-versa.
+
+Como o HttpApp espera que forneçamos um único objeto Route, combinamos ambas as rotas em uma única dentro do método de rotas. Aqui, usamos a diretiva de caminho para finalmente fornecer o caminho de URL no qual nossa API deve estar disponível.
+
+Vinculamos a rota fornecida por postUser() ao caminho / usuários. Se a solicitação de entrada não for uma solicitação POST, a Akka irá automaticamente para o branch orElse e esperará que o caminho seja / users / <id> e o método HTTP seja GET.
