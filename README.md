@@ -16,3 +16,5 @@ Os tipos de mensagem são classes simples de contêiner serializáveis com algun
 Mais tarde, veremos como traduzir as solicitações HTTP de entrada nessas mensagens.
 
 Por fim, delegamos todas as mensagens a uma instância de UserService, que fornece a lógica de negócios necessária para gerenciar objetos de usuário persistentes.
+
+Além disso, observe o método props (). Embora o método props () não seja necessário para estender AbstractActor, ele será útil posteriormente ao criar o ActorSystem.
