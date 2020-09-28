@@ -39,3 +39,8 @@ Em postUser(), fazemos as coisas de maneira um pouco diferente, já que esperamo
 Como o HttpApp espera que forneçamos um único objeto Route, combinamos ambas as rotas em uma única dentro do método de rotas. Aqui, usamos a diretiva de caminho para finalmente fornecer o caminho de URL no qual nossa API deve estar disponível.
 
 Vinculamos a rota fornecida por postUser() ao caminho / usuários. Se a solicitação de entrada não for uma solicitação POST, a Akka irá automaticamente para o branch orElse e esperará que o caminho seja / users / <id> e o método HTTP seja GET.
+  
+  ##
+  Se o método HTTP for GET, a solicitação será encaminhada para a rota getUser (). Se o usuário não existir, a Akka retornará o status HTTP 404 (não encontrado). Se o método não for POST nem GET, a Akka retornará o status HTTP 405 (Método não permitido)
+  
+  
